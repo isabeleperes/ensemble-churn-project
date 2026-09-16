@@ -1,0 +1,4 @@
+Modelo,Accuracy,Precision,Recall,F1,ROC AUC
+Decision Tree (padrão),0.732,0.496,0.5,0.498,0.658
+Decision Tree (podada),0.78,0.618,0.449,0.52,0.824
+Decision Tree (otimizada),0.779,0.606,0.481,0.537,0.809
