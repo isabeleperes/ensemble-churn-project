@@ -12,8 +12,7 @@ accuracy_score, precision_score, recall_score, f1_score,
 roc_auc_score, RocCurveDisplay,
 )
 #%% PASSOS 1-6: carregar e preparar os dados
-url = "https://raw.githubusercontent.com/pplonski/datasets-for-
-↪ start/refs/heads/master/telco-customer-churn/Telco-Customer-Churn.csv"
+url = "https://raw.githubusercontent.com/pplonski/datasets-for-start/refs/heads/master/telco-customer-churn/Telco-Customer-Churn.csv"
 df = pd.read_csv(url)
 df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
 df = df.dropna()
@@ -77,7 +76,6 @@ for nome, modelo in modelos.items():
 })
 tabela_final = pd.DataFrame(resultados).set_index('Modelo')
 
-****
 # pd.DataFrame() transforma a lista de dicionários numa tabela de verdade.
 
 # .set_index('Modelo') faz a coluna "Modelo" virar o rótulo de cada
@@ -96,15 +94,15 @@ fig, eixo = plt.subplots(figsize=(8, 6))
 # uma vez só — é a forma recomendada quando você vai desenhar várias
 # curvas SOBRE o mesmo gráfico, em vez de gráficos separados.
 for nome, modelo in modelos.items():
-RocCurveDisplay.from_estimator(modelo, X_teste, y_teste, name=nome, ax=eixo)
+    RocCurveDisplay.from_estimator(modelo, X_teste, y_teste, name=nome, ax=eixo)
 # ax=eixo diz para essa curva ser desenhada no MESMO gráfico que as
 # anteriores, em vez de abrir um gráfico novo a cada volta do for —
 # é assim que as 3 curvas acabam sobrepostas na mesma imagem final.
-eixo.plot([0, 1], [0, 1], '--', color='grey', label='Classificador aleatório')
+    eixo.plot([0, 1], [0, 1], '--', color='grey', label='Classificador aleatório')
 # a linha diagonal de referência, que representa um modelo que "chuta"
 # sem aprender nada — qualquer curva acima dela está indo melhor que sorte.
-eixo.set_title('Comparação final — Decision Tree x Random Forest x XGBoost')
-eixo.legend(loc='lower right')
+    eixo.set_title('Comparação final — Decision Tree x Random Forest x XGBoost')
+    eixo.legend(loc='lower right')
 # loc='lower right' posiciona a caixinha de legenda no canto inferior
 # direito do gráfico, onde normalmente não atrapalha as curvas (que
 # tendem a subir para o canto superior esquerdo).
