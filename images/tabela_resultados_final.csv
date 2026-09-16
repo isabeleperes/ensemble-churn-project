@@ -1,0 +1,4 @@
+Modelo,Accuracy,Precision,Recall,F1,ROC AUC
+Decision Tree (Semana 1),0.78,0.618,0.449,0.52,0.824
+Random Forest (Semana 2),0.792,0.64,0.5,0.562,0.832
+XGBoost (Semana 2),0.768,0.569,0.527,0.547,0.808
